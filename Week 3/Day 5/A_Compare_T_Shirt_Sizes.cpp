@@ -17,24 +17,26 @@ int main() {
         if (mainUnitA == mainUnitB) {
             if (a.size() == b.size()) {
                 cout << "=\n";
-            } else if (mainUnitA == 'S' and mainUnitB == 'S') {
+            } else if (mainUnitA == 'S') {
                 if (a.size() > b.size()) {
                     cout << "<\n";
                 } else {
                     cout << ">\n";
                 }
-            } else if (mainUnitA == 'L' and mainUnitB == 'L') {
+            } else if (mainUnitA == 'L') {
                 if (a.size() > b.size()) {
                     cout << ">\n";
                 } else {
                     cout << "<\n";
                 }
+            }
+        } else {
+            if ((mainUnitA == 'S' and mainUnitB == 'M') or (mainUnitA == 'S' and mainUnitB == 'L') ) {
+                cout << "<\n";
+            } else if((mainUnitA == 'M' and mainUnitB == 'L')){
+                cout << "<\n";
             }else{
-                if(mainUnitA == 'S'){
-                    cout << "<\n";
-                }else{
-                    cout << ">\n";
-                }
+                cout << ">\n";
             }
         }
     }
