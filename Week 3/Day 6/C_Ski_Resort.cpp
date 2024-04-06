@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long int
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
@@ -20,18 +21,19 @@ int main() {
                 arr.push_back(1);
         }
 
-        int l = 0, r = 0, count = 0, ans = 0;
-        for (int i = 0; i < n; i++) {
+        ll count = 0, ans = 0;
+        for (int i = 0; i < n; ++i) {
             if (arr[i] == 1) {
                 count++;
+            } else {
                 if (count >= k) {
-                    ll sum = count - k + 1;
-                    ll add = (sum * (sum + 1)) / 2;
-                    ans += add;
+                    ans += (count - k + 1) * (count - k + 2) / 2;
                 }
+                count = 0;
             }
-            count = 0;
-            l = r;
+        }
+        if (count >= k) {
+            ans += (count - k + 1) * (count - k + 2) / 2;
         }
         cout << ans << endl;
     }
