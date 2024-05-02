@@ -8,10 +8,10 @@ int main() {
     int n, a, b;
     cin >> n >> a >> b;
 
-    int l = 1, r = 200, ans;
-    while (l <= r) {
-        
+    int ans = 0;
+    for (int i = 1; i < n; i++) {
+        ans = max(ans, min(a / i, b / (n - i)));
     }
-
+    cout << ans;
     return 0;
 }
