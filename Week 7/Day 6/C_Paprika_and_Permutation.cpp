@@ -10,27 +10,34 @@ int main() {
     while (t--) {
         int n;
         cin >> n;
-        vector<ll> arr(n);
+        set<int> s;
+        for (int i = 1; i <= n; i++) s.insert(i);
+
+        vector<int> arr;
         for (int i = 0; i < n; i++) {
-            cin >> arr[i];
+            int x;
+            cin >> x;
+            if (s.find(x) == s.end()) {
+                arr.push_back(x);
+            } else {
+                s.erase(x);
+            }
         }
         sort(arr.begin(), arr.end());
 
-        auto isOk = [&](int key) {
-            int count = 0;
-            return count;
-        };
+        int ans = 0;
+        bool flag = true;
 
-        int l = 0, r = n, ans = -1;
-        while (l <= r) {
-            int mid = (l + r) / 2;
-            if (isOk(mid)) {
-                ans = mid;
-                r = mid - 1;
-            } else
-                l = mid + 1;
+        for (int x : arr) {
+            auto need = s.begin();
+            if (*need > (x - 1) / 2) {
+                flag = false;
+                break;
+            }
+            ans++;
+            s.erase(need);
         }
-        cout << ans << endl;
+        (flag) ? cout << ans << endl : cout << "-1\n";
     }
 
     return 0;
