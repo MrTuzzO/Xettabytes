@@ -17,7 +17,7 @@ int main() {
             ll x;
             cin >> x;
             if (x > 0) posX.push_back(x);
-            if (x < 0) negX.push_back(abs(x));
+            else negX.push_back(abs(x));
         }
 
         sort(posX.begin(), posX.end(), greater<>());
